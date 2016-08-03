@@ -1,0 +1,29 @@
+ja:
+  spree:
+    api:
+      must_specify_api_key: "APIキーを指定する必要があります。"
+      invalid_api_key: "無効なAPIキー(%{key})が指定されました。"
+      unauthorized: "そのアクションを実行する権限がありません。"
+      invalid_resource: "無効なリソース。エラーを修正して、再度試してください。"
+      resource_not_found: "お探しのリソースが見つかりませんでした。"
+      gateway_error: "支払いゲートウェイに問題がありました: %{text}"
+      access: "API アクセス"
+      key: "キー"
+      clear_key: "キーをクリア"
+      regenerate_key: "キーを再生成"
+      no_key: "キーがありません"
+      generate_key: "API キーの生成"
+      key_generated: "生成されたキー"
+      key_cleared: "クリアされたキー"
+      order:
+        could_not_transition: "注文が移動できませんでした。エラーを修正して、再度試してください。"
+        invalid_shipping_method: "無効な配送方法が指定されました。"
+        expected_total_mismatch: "予想合計が実際の合計と一致しませんでした。"
+        quantity_is_not_available: "注文のアイテムのための数量が入手できません。"
+      payment:
+        credit_over_limit: "この支払はわずか %{limit} だけ入金することができます。この数字以下の金額を指定してください。"
+        update_forbidden: "それが%{state}であるため、この支払いは更新できません。"
+      shipment:
+        cannot_ready: "配送の準備ができていません。"
+      invalid_taxonomy_id: "無効な分類id"
+
