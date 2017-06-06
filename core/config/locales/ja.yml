@@ -135,10 +135,10 @@ ja:
         preference_source: 優先するソース
         type: プロバイダー
       spree/price:
-        amount: 価格
-        country: 国
         currency: 通貨
+        amount: 価格
         is_default: 現在有効
+        country: 国
         price: 価格
         variant: バリアント
       spree/product:
@@ -165,7 +165,7 @@ ja:
         value: 値
       spree/promotion:
         advertise: 宣伝する
-        apply_automatically:  自動的に適応する
+        apply_automatically:  自動的に適用する
         code: コード
         description: 説明
         event_name: イベント名称
@@ -351,6 +351,10 @@ ja:
         name: 名称
         default_tax: デフォルトの税地域
     models:
+      # LegacyUser maps to this model_name so we want to provide translations for it
+      user:
+        one: ユーザー
+        other: ユーザー
       spree/address:
         one: 住所
         other: 住所
@@ -375,6 +379,9 @@ ja:
       spree/exchange:
         one: 交換
         other: 交換
+      spree/image:
+        one: 画像
+        other: 画像
       spree/inventory_unit:
         one: イベントリ単位
         other: イベントリ単位
@@ -421,8 +428,8 @@ ja:
         one: プロモーション カテゴリー
         other: プロモーション カテゴリー
       spree/property:
-        one: プロパティ
-        other: プロパティ
+        one: プロパティタイプ
+        other: プロパティタイプ
       spree/prototype:
         one: プロトタイプ
         other: プロトタイプ
@@ -442,8 +449,8 @@ ja:
         one: 返品承認
         other: 返品承認
       spree/return_reason:
-        one: 返品理由
-        other: 返品理由
+        one: RMA 理由
+        other: RMA 理由
       spree/role:
         one: 権限
         other: 権限
@@ -697,9 +704,10 @@ ja:
     admin:
       tab:
         areas: 地域
-        checkout: 精算
+        checkout: 払い戻しと返品
         configuration: コンフィグレーション
-        general: 一般
+        display_order: 表示順
+        general: 店舗
         option_types: オプションタイプ
         orders: 注文
         overview: 概要
@@ -707,15 +715,15 @@ ja:
         products: 商品
         promotions: プロモーション
         promotion_categories: プロモーション カテゴリー
-        properties: プロパティ
+        properties: プロパティタイプ
         prototypes: プロトタイプ
         reports: レポート
         rma: RMA
         settings: 設定
         shipping: 配送
         stock: 在庫
-        stock_items: 管理
-        stock_transfers: 入出庫
+        stock_items: 店舗在庫
+        stock_transfers: 在庫移動
         taxes: 税
         taxonomies: 分類ツリー
         taxons: 分類
@@ -770,8 +778,10 @@ ja:
           amount_authorized_exceeds_total_credit: 利用可能なクレジットを超えています
           amount_used_not_zero: ゼロより大きいです。ストアクレジットを削除する事はできません
           update_reason_required: 変更の理由を選択しないといけません
+      taxons:
+        display_order: 表示順
       variants:
-        index:
+        table_filter:
           show_deleted: 削除されたバリアントを表示
         new:
           new_variant: 新しいバリアント
@@ -813,6 +823,7 @@ ja:
     analytics_desc_list_4: それは完全に無料です
     analytics_trackers: アナリティクス トラッカー
     and: and
+    apply_code: コードの適用
     approve: 承認
     approver: 承認者
     approved_at: 承認日時
@@ -843,12 +854,12 @@ ja:
     back_to_products_list: 商品一覧へ戻る
     back_to_promotions_list: プロモーション一覧へ戻る
     back_to_promotion_categories_list: プロモーションカテゴリー一覧へ戻る
-    back_to_properties_list: プロパティ一覧へ戻る
+    back_to_properties_list: プロパティタイプ一覧へ戻る
     back_to_prototypes_list: プロトタイプ一覧へ戻る
     back_to_reports_list: レポート一覧へ戻る
     back_to_refund_reason_list: 返金理由一覧へ戻る
     back_to_reimbursement_type_list: 払い戻し種類一覧へ戻る
-    back_to_return_authorizations_list: 返品権限一覧へ戻る
+    back_to_return_authorizations_list: RMA一覧へ戻る
     back_to_rma_reason_list: 返品理由一覧へ戻る
     back_to_shipping_categories: 配送カテゴリーへ戻る
     back_to_shipping_categories_list: 配送カテゴリー一覧へ戻る
@@ -879,7 +890,7 @@ ja:
     calculator: 計算表
     calculator_settings_warning: あなたが計算表タイプや参照元を変更するなら、計算表の設定を編集する前にあなたは最初に保存する必要があります。
     cancel: キャンセル
-    cancel_inventory: イベントリをキャンセル
+    cancel_inventory: アイテムをキャンセル
     canceled: キャンセルされた
     canceled_at: キャンセル日時
     canceler: キャンセルした人
@@ -1031,7 +1042,7 @@ ja:
     editing_product: 商品を編集
     editing_promotion: プロモーションを編集
     editing_promotion_category: プロモーションカテゴリーを編集
-    editing_property: プロパティを編集
+    editing_property: プロパティタイプを編集
     editing_prototype: プロトタイプを編集
     edit_refund_reason: 返金理由を編集
     editing_refund: 返金を編集
@@ -1098,7 +1109,7 @@ ja:
         user:
           signup: ユーザー登録
     exceptions:
-      count_on_hand_setter: Cannot set count_on_hand manually, as it is set automatically by the recalculate_count_on_hand callback. Please use `update_column(:count_on_hand, value)` instead.
+      count_on_hand_setter: count_on_hand を手動でセットする事ができません。それは、 recalculate_count_on_hand callback によって自動的に設定されるためです。代わりに `update_column(:count_on_hand, value)` を使って下さい。
     exchange_for: 引き換え
     expedited_exchanges_warning: どれかの指定の交換は、保存されてすぐに顧客に配送されるでしょう。もし %{days_window} 以内に元のアイテムを返さない場合、顧客はアイテムの全額が課金されます。
     excl: excl.
@@ -1107,6 +1118,15 @@ ja:
     expiration: 有効期限
     extension: 拡張
     existing_shipments: 既存の配送
+    hints:
+      spree/price:
+        country: "これは、価格が有効な国を決定します。<br/> デフォルト: いくつかの国"
+      spree/product:
+        promotionable: "これは、この商品にプロモーションを適用するかどうかを決定します。<br/> デフォルト: Checked"
+        shipping_category: "これは、この商品が要求する配送の種類を決定します。<br/> デフォルト: Default"
+        tax_category: "これは、この商品に適用された課税の種類を決定します。<br/> デフォルト: None"
+      spree/variant:
+        tax_category: "これは、このバリアントに適用された課税の種類を決定します。<br/> デフォルト: Use tax category of the product associated with this variant"
     failed_payment_attempts: 失敗した支払いの試み
     failure: 失敗
     filename: ファイル名
@@ -1135,7 +1155,7 @@ ja:
     gateway_config_unavailable: 環境によって Gateway を使用できません。
     gateway_error: Gateway エラー
     general: 一般
-    general_settings: 一般設定
+    general_settings: 店舗
     google_analytics: Google Analytics
     google_analytics_id: アナリティクスID
     group_size: グループサイズ
@@ -1212,7 +1232,7 @@ ja:
         gt: より大きい
         gte: 以上
     items_cannot_be_shipped: 私たちは、選択した商品のための配達料金を計算する事ができません。
-    items_in_rmas: 返品権限のアイテム
+    items_in_rmas: RMA(Return Merchandise Authorizations) のアイテム
     items_to_be_reimbursed: アイテムは払い戻されます。
     items_reimbursed: アイテムは払い戻された
     jirafe: Jirafe
@@ -1224,12 +1244,12 @@ ja:
     lifetime_stats: 存続期間 統計
     line_item_adjustments: 単位品目調整（値引き・追加料金・税）
     list: リスト
-    listing_countries: 国一覧
-    listing_orders: 注文一覧
-    listing_products: 商品一覧
-    listing_reports: レポート一覧
-    listing_tax_categories: 税カテゴリー一覧
-    listing_users: ユーザー一覧
+    listing_countries: 国
+    listing_orders: 注文
+    listing_products: 商品
+    listing_reports: レポート
+    listing_tax_categories: 税カテゴリー
+    listing_users: ユーザー
     loading: Loading
     locale_changed: ロケールが変更される
     location: ロケーション
@@ -1248,7 +1268,7 @@ ja:
     make_refund: 払い戻しを作ります
     make_sure_the_above_reimbursement_amount_is_correct: 上記の払い戻し額が正しいかを確認してください。
     manage_promotion_categories: プロモーションカテゴリー管理
-    manage_stock: 在庫管理
+    manage_stock: 店舗在庫
     manual_intervention_required: 手動調停が必須
     manage_variants: バリアント管理
     master_price: 値段
@@ -1287,12 +1307,12 @@ ja:
     new_product: 新しい商品
     new_promotion: 新しいプロモーション
     new_promotion_category: 新しいプロモーションカテゴリー
-    new_property: 新しいプロパティ
+    new_property: 新しいプロパティタイプ
     new_prototype: 新しいプロトタイプ
     new_refund: 新しい返金
     new_refund_reason: 新しい返金理由
-    new_rma_reason: 新しい返品理由
-    new_return_authorization: 新しい返品権限
+    new_rma_reason: 新しい RMA の理由
+    new_return_authorization: 新しい RMA
     new_shipping_category: 新しい配送カテゴリー
     new_shipping_method: 新しい配送方法
     new_shipment_at_location: ロケーションでの新しい配送
@@ -1300,11 +1320,12 @@ ja:
     new_stock_location: 新しい在庫ロケーション
     new_stock_movement: 新しい在庫変動
     new_stock_transfer: 新しい入出庫
+    new_store_credit: 新しいストアクレジット
     new_tax_category: 新しい税カテゴリー
     new_tax_rate: 新しい税率
     new_taxon: 新しい分類
     new_taxonomy: 新しい分類ツリー
-    new_tracker: 新しいトラッカー
+    new_tracker: 新しいアナリティクストラッカー
     new_user: 新しいユーザー
     new_variant: 新しいバリアント
     new_zone: 新しい地域
@@ -1556,8 +1577,8 @@ ja:
     promotion_total_changed_before_complete: 注文のプロモーションの一つ以上が不適格となり削除されました。新しい注文の金額を確認して、もう一度お試しください。
     promotion_uses: プロモーション用途
     propagate_all_variants: 全てのバリアントを宣伝する
-    properties: プロパティ
-    property: プロパティ
+    properties: プロパティタイプ
+    property: プロパティタイプ
     prototype: プロトタイプ
     prototypes: プロトタイプ
     provider: Provider
@@ -1607,10 +1628,9 @@ ja:
     resume: レジューム
     resumed: レジューム
     return: 返品
-    return_authorization: 返品権限
-    return_reasons: 返品理由
-    return_authorization_updated: 返品権限を更新します
-    return_authorizations: 返品権限
+    return_authorization: 商品返品権限
+    return_authorizations: 商品返品権限
+    return_authorization_updated: 商品返品権限を更新します
     return_item_inventory_unit_ineligible: 返品アイテムのイベントリユニットは配送されなければなりません。
     return_item_inventory_unit_reimbursed: 返品アイテムのイベントリユニットは既に払い戻されています。
     return_item_order_not_completed: 返品アイテムの注文は完了されていなければなりません。
@@ -1631,6 +1651,7 @@ ja:
         total_refunded: ! '合計返金: %{total}'
     return_number: 返品番号
     return_quantity: 返品数量
+    return_reasons: 返品理由
     returned: 返品した
     review: レビュー
     risk: リスク
@@ -1750,7 +1771,7 @@ ja:
     stock_location_info: 在庫ロケーション情報
     stock_locations: 在庫ロケーション
     stock_locations_need_a_default_country: 在庫ロケーションを作る前にデフォルトの国を作らなければなりません。
-    stock_management: 在庫管理
+    stock_management: 商品在庫
     stock_management_requires_a_stock_location: 在庫を管理するための注文の在庫ロケーションを作成してください。
     stock_movements: 在庫移動
     stock_movements_for_stock_location: '%{stock_location_name} ための在庫移動'

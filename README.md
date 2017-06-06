@@ -7,7 +7,7 @@ It provides the Japanese to Solidus.
 Add to your Gemfile:
 
 ```ruby
-gem 'solidus', '~> 1.3.0'
+gem 'solidus', '~> 1.4.0'
 gem 'solidus_auth_devise'
 gem 'rails-i18n'
 gem 'devise-i18n'
