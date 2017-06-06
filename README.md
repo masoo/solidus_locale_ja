@@ -7,7 +7,7 @@ It provides the Japanese to Solidus.
 Add to your Gemfile:
 
 ```ruby
-gem 'solidus'
+gem 'solidus', '~> 1.3.0'
 gem 'solidus_auth_devise'
 gem 'rails-i18n'
 gem 'devise-i18n'
@@ -63,7 +63,7 @@ $ vi config/initializers/spree.rb
 ```
 
 ```ruby
-  Spree::Frontend::Config.configure do |config|
+  Spree.config do |config|
     # comment out
     # config.currency = "USD"
     #
@@ -71,13 +71,27 @@ $ vi config/initializers/spree.rb
     config.currency = "JPY"
   end
 
-  Spree::Backend::Config.configure do |config|
+  Spree::Frontend::Config.configure do |config|
     # comment out
-    # config.currency = "USD"
+    # config.locale = 'en'
     #
     # add next line
-    config.currency = "JPY"
+    config.locale = 'ja'
   end
+
+  Spree::Backend::Config.configure do |config|
+    # comment out
+    # config.locale = 'en'
+    #
+    # add next line
+    config.locale = 'ja'
+  end
+```
+
+## Admin Setting
+
+```
+$ bundle exec rake spree_auth:admin:create
 ```
 
 ## Start
