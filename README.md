@@ -45,7 +45,7 @@ build seed data.
 $ bundle exec rake db:seed:solidus_locale_ja
 ```
 
-## Display japanese
+## Display japanese and Setting
 
 edit `config/application.rb` and `config/initializers/spree.rb`
 
@@ -69,6 +69,7 @@ $ vi config/initializers/spree.rb
     #
     # add next line
     config.currency = "JPY"
+    config.default_country_id = 1
   end
 
   Spree::Frontend::Config.configure do |config|
