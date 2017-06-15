@@ -47,7 +47,7 @@ $ bundle exec rake db:seed:solidus_locale_ja
 
 ## Display japanese and Setting
 
-edit `config/application.rb` and `config/initializers/spree.rb`
+edit `config/initializers/locale.rb` and `config/initializers/spree.rb`
 
 ```shell
 $ vi config/initializers/locale.rb
