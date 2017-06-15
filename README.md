@@ -7,7 +7,7 @@ It provides the Japanese to Solidus.
 Add to your Gemfile:
 
 ```ruby
-gem 'solidus', '~> 1.4.0'
+gem 'solidus', '~> 2.0.0'
 gem 'solidus_auth_devise'
 gem 'rails-i18n'
 gem 'devise-i18n'
@@ -50,12 +50,12 @@ $ bundle exec rake db:seed:solidus_locale_ja
 edit `config/application.rb` and `config/initializers/spree.rb`
 
 ```shell
-$ vi config/application.rb
+$ vi config/initializers/locale.rb
 ```
 
 ```ruby
   # add next line.
-  config.i18n.default_locale = :ja
+  Rails.application.config.i18n.default_locale = :ja
 ```
 
 ```shell
@@ -98,5 +98,5 @@ $ bundle exec rake spree_auth:admin:create
 ## Start
 
 ```shell
-$ bundle exec rails s -b 0.0.0.0
+$ bundle exec rails s
 ```

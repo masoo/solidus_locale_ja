@@ -1,3 +1,3 @@
 module SolidusLocaleJa
-  VERSION = "1.4.0.1"
+  VERSION = "2.0.0"
 end

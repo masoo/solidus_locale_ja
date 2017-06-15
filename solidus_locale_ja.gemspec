@@ -17,8 +17,7 @@ Gem::Specification.new do |s|
   s.files = Dir["{db,lib}/**/*", "{api,core}/config/locales/ja.yml", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
 
-  s.add_dependency "rails", "~> 4.2.0"
-  s.add_dependency "solidus", "~> 1.4.0"
+  s.add_dependency "solidus", "~> 2.0.0"
 
   s.add_development_dependency "sqlite3"
 end
