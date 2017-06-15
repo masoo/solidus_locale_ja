@@ -48,10 +48,14 @@ ActiveRecord::Base.transaction do
   p "add Store Credit"
   Spree::StoreCreditCategory.find_or_create_by!(name: Spree.t("store_credit_category.default"))
   Spree::PaymentMethod.find_by(name: "Store Credit").update!(
-    name: "銀行振り込み", # "Store Credit"
-    description: "銀行振り込み", # "Store Credit"
-    active: true,
-    display_on: 'none',
+    name: "ストアクレジット",
+    description: "ストアクレジット（返品した品物と同金額分の買い物）"
+  )
+  Spree::PaymentMethod.create_with(
+    name: "銀行振り込み",
+    description: "銀行振り込み",
+    active: true
+  ).find_or_create_by!(
     type: "Spree::PaymentMethod::Check"
   )
   Spree::StoreCreditType.create_with(priority: 1).find_or_create_by!(name: '有効期限付き') # name: 'Expiring'
