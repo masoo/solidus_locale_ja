@@ -182,8 +182,6 @@ ja:
       spree/property:
         name: 名前
         presentation: 表現
-      spree/prototype:
-        name: 名称
       spree/refund:
         amount: 金額
         description: 説明
@@ -256,6 +254,7 @@ ja:
         seo_title: SEO タイトル
         name: サイト名
         mail_from_address: メールアドレス
+        cart_tax_country_iso: カートに表示させるの税の国
       spree/store_credit:
         amount: 金額
         amount_authorized: 金額認可
@@ -365,8 +364,56 @@ ja:
         one: 調整理由
         other: 調整理由
       spree/calculator:
-        one: 計算表
-        other: 計算表
+        one: 基本計算表
+        other: 基本計算表
+      spree/calculator/default_tax:
+        one: デフォルトの税
+        other: デフォルトの税
+      spree/calculator/flat_percent_item_total:
+        one: 定率
+        other: 定率
+      spree/calculator/flat_rate:
+        one: 定レート
+        other: 定レート
+      spree/calculator/flexi_rate:
+        one: 変動レート
+        other: 変動レート
+      spree/calculator/free_shipping:
+        one: 送料無料
+        other: 送料無料
+      spree/calculator/percent_on_line_item:
+        one: アイテム毎の割合
+        other: アイテム毎の割合
+      spree/calculator/percent_per_item:
+        one: アイテム毎の割合
+        other: アイテム毎の割合
+      spree/calculator/price_sack:
+        one: 価格一袋分
+        other: 価格一袋分
+      spree/calculator/tiered_percent:
+        one: 列のパーセント
+        other: 列のパーセント
+      spree/calculator/tiered_flat_rate:
+        one: 列の定額レート
+        other: 列の定額レート
+      spree/calculator/returns/default_refund_amount:
+        one: デフォルト払い戻し金額
+        other: デフォルト払い戻し金額
+      spree/calculator/shipping/flat_percent_item_total:
+        one: 定率
+        other: 定率
+      spree/calculator/shipping/flat_rate:
+        one: 定レート
+        other: 定レート
+      spree/calculator/shipping/flexi_rate:
+        one: パッケージアイテム毎の変動レート
+        other: パッケージアイテム毎の変動レート
+      spree/calculator/shipping/per_item:
+        one: パッケージアイテム毎の定レート
+        other: パッケージアイテム毎の定レート
+      spree/calculator/shipping/price_sack:
+        one: 価格一袋分
+        other: 価格一袋分
       spree/country:
         one: 国
         other: 国
@@ -430,9 +477,6 @@ ja:
       spree/property:
         one: プロパティタイプ
         other: プロパティタイプ
-      spree/prototype:
-        one: プロトタイプ
-        other: プロトタイプ
       spree/refund:
         one: 返金
         other: 返金
@@ -545,8 +589,8 @@ ja:
               cannot_destroy_shipment_state: "%{state} 出荷のためのイベント単位を削除できない"
         spree/line_item:
           attributes:
-            currency:
-              must_match_order_currency: 注文の通貨と一致する必要があります
+            price:
+              not_a_number: "有効ではない"
         spree/price:
           attributes:
             currency:
@@ -687,6 +731,8 @@ ja:
     adjustment: 調整
     adjustment_amount: 金額
     adjustment_labels:
+      line_item: '%{promotion} (%{promotion_name})'
+      order: '%{promotion} (%{promotion_name})'
       tax_rates:
         sales_tax: '%{name}'
         vat: '%{name} (Included in Price)'
@@ -702,42 +748,33 @@ ja:
     adjustment_total: 調整（値引き・追加料金）合計
     adjustments: 調整
     admin:
-      tab:
-        areas: 地域
-        checkout: 払い戻しと返品
-        configuration: コンフィグレーション
-        display_order: 表示順
-        general: 店舗
-        option_types: オプションタイプ
-        orders: 注文
-        overview: 概要
-        payments: 支払い
-        products: 商品
-        promotions: プロモーション
-        promotion_categories: プロモーション カテゴリー
-        properties: プロパティタイプ
-        prototypes: プロトタイプ
-        reports: レポート
-        rma: RMA
-        settings: 設定
-        shipping: 配送
-        stock: 在庫
-        stock_items: 店舗在庫
-        stock_transfers: 在庫移動
-        taxes: 税
-        taxonomies: 分類ツリー
-        taxons: 分類
-        users: ユーザー
-      user:
-        account: アカウント
-        addresses: 住所
-        items: アイテム
-        items_purchased: 購入したアイテム
-        order_history: 注文履歴
-        order_num: "注文 #"
-        orders: Orders
-        store_credit: ストアクレジット（ポイント）
-        user_information: ユーザー情報
+      general_settings:
+        edit:
+          no_cart_tax_country: 住所がない場合カートに税を表示しない
+      images:
+        index:
+          choose_files: アップロードするためにファイルを選んでください
+          drag_and_drop: もしくは、ここにドラッグアンドドロップしてください
+          image_process_failed: サーバーは画像処理に失敗しました
+          upload_images: 画像をアップロード
+      payments:
+        source_forms:
+          storecredit:
+            not_supported: ストアクレジット支払いの作成は、管理者よって現在サポートしていません。
+      prices:
+        any_country: "いくつかの国々"
+        index:
+          amount_greater_than: 金額以上
+          amount_less_than: 金額以下
+          new_price: 新しい価格
+        edit:
+          edit_price: 価格を編集
+        new:
+          new_price: 新しい価格
+      promotions:
+        form:
+          starts_at_placeholder: すぐに
+          expires_at_placeholder: 決してない
       store_credits:
         add: ストアクレジット（ポイント）を追加
         amount_authorized: 金額認定
@@ -771,6 +808,7 @@ ja:
         select_amount_update_reason: 金額を更新した理由を選択してください
         total_unused: 未使用合計
         type_html_header: クレジットタイプ
+        view: "ストアクレジットの表示"
         errors:
           cannot_change_used_store_credit: 要求されているストアクレジットは変更する事ができません
           cannot_be_modified: 変更する事はできません
@@ -778,8 +816,46 @@ ja:
           amount_authorized_exceeds_total_credit: 利用可能なクレジットを超えています
           amount_used_not_zero: ゼロより大きいです。ストアクレジットを削除する事はできません
           update_reason_required: 変更の理由を選択しないといけません
+      tab:
+        areas: 地域
+        checkout: 払い戻しと返品
+        configuration: コンフィグレーション
+        display_order: 表示順
+        general: 店舗
+        option_types: オプションタイプ
+        orders: 注文
+        overview: 概要
+        payments: 支払い
+        products: 商品
+        promotions: プロモーション
+        promotion_categories: プロモーション カテゴリー
+        properties: プロパティタイプ
+        reports: レポート
+        rma: RMA
+        settings: 設定
+        shipping: 配送
+        stock: 在庫
+        stock_items: 店舗在庫
+        stock_transfers: 在庫移動
+        taxes: 税
+        taxonomies: 分類ツリー
+        taxons: 分類
+        users: ユーザー
       taxons:
         display_order: 表示順
+      user:
+        account: アカウント
+        addresses: 住所
+        items: アイテム
+        items_purchased: 購入したアイテム
+        order_history: 注文履歴
+        order_num: "注文 #"
+        orders: Orders
+        store_credit: ストアクレジット（ポイント）
+        user_information: ユーザー情報
+      users:
+        user_page_actions:
+          create_order: このユーザーのために注文を作成
       variants:
         table_filter:
           show_deleted: 削除されたバリアントを表示
@@ -792,16 +868,6 @@ ja:
           use_product_tax_category: 商品の税カテゴリーを使う
           pricing: 価格
           pricing_hint: これらの値は、商品詳細ページから投入され、以下を上書きします。
-      prices:
-        any_country: いくつかの国々
-        index:
-          amount_greater_than: 金額以上
-          amount_less_than: 金額以下
-          new_price: 新しい価格
-        edit:
-          edit_price: 価格を編集
-        new:
-          new_price: 新しい価格
     administration: 管理
     admin_login: 管理者ログイン
     agree_to_privacy_policy: プライバシーポリシーに同意
@@ -855,7 +921,6 @@ ja:
     back_to_promotions_list: プロモーション一覧へ戻る
     back_to_promotion_categories_list: プロモーションカテゴリー一覧へ戻る
     back_to_properties_list: プロパティタイプ一覧へ戻る
-    back_to_prototypes_list: プロトタイプ一覧へ戻る
     back_to_reports_list: レポート一覧へ戻る
     back_to_refund_reason_list: 返金理由一覧へ戻る
     back_to_reimbursement_type_list: 払い戻し種類一覧へ戻る
@@ -977,7 +1042,6 @@ ja:
     customer_returns: 顧客からの返品
     create: 作成
     create_a_new_account: 新しいアカウントを作成
-    create_new_order: 新しい注文を作る
     create_reimbursement: 払い戻しの作成
     create_one: ひとつ作ってください
     created_at: 作成日時
@@ -1043,7 +1107,6 @@ ja:
     editing_promotion: プロモーションを編集
     editing_promotion_category: プロモーションカテゴリーを編集
     editing_property: プロパティタイプを編集
-    editing_prototype: プロトタイプを編集
     edit_refund_reason: 返金理由を編集
     editing_refund: 返金を編集
     editing_refund_reason: 返金理由を編集
@@ -1064,6 +1127,7 @@ ja:
     eligibility_errors:
       messages:
         has_excluded_product: カートにクーポンコードの適用を防止する商品が含まれています。
+        has_excluded_taxon: カートにクーポンコードの適用を防止するカテゴリーの商品が含まれています。
         item_total_less_than: このクーポンコードは、%{amount} 未満の注文に適用する事はできません。
         item_total_less_than_or_equal: このクーポンコードは、%{amount} 以下の注文に適用する事はできません。
         limit_once_per_user: このクーポンコードは一人のお客様につき一回使用できます。
@@ -1121,12 +1185,22 @@ ja:
     hints:
       spree/price:
         country: "これは、価格が有効な国を決定します。<br/> デフォルト: いくつかの国"
+        master_variant: "マスターのバリアント価格を変更しても、以前のバリアント価格は変更されません。しかしすべての新規のバリアントを追加するために使われます。"
+        options: "これらのオプションは、バリアントテーブルにバリアントを作成するために使われます。それらはバリアントタブで変更する事ができます。"
       spree/product:
         promotionable: "これは、この商品にプロモーションを適用するかどうかを決定します。<br/> デフォルト: Checked"
         shipping_category: "これは、この商品が要求する配送の種類を決定します。<br/> デフォルト: Default"
         tax_category: "これは、この商品に適用された課税の種類を決定します。<br/> デフォルト: None"
+      spree/promotion:
+        starts_at: "これは、プロモーションが注文に適用できる時に決定します。<br/> もし値が指定されていないなら、すぐに利用可能になります。"
+        expires_at: "これは、プロモーションの終了を決定します。<br/> もし値が指定されていないなら、そのプロモーションは、終わらないでしょう。"
+      spree/store:
+        cart_tax_country_iso: "これは、カートの税のために使用される国を決定します。(まだ住所がない注文の時).<br/> デフォルト: None."
       spree/variant:
         tax_category: "これは、このバリアントに適用された課税の種類を決定します。<br/> デフォルト: Use tax category of the product associated with this variant"
+        deleted: "バリアントを削除"
+        deleted_explanation: "このバリアントは %{date} に削除されました。"
+        deleted_explanation_with_replacement: "このバリアントは %{date} に削除されました。 同じ品番[SKU]の他のものに書き換えられました。"
     failed_payment_attempts: 失敗した支払いの試み
     failure: 失敗
     filename: ファイル名
@@ -1214,6 +1288,7 @@ ja:
     inventory_adjustment: イベントリ調整
     inventory_canceled: イベントリキャンセル
     inventory_error_flash_for_insufficient_quantity: カート内のアイテムが使用できなくなっています。
+    inventory_not_available: "%{item} のためのイベントリは使用できません."
     inventory_state: イベントリ状態
     inventory_states:
       backordered: バックオーダーされた
@@ -1272,6 +1347,7 @@ ja:
     manual_intervention_required: 手動調停が必須
     manage_variants: バリアント管理
     master_price: 値段
+    master_variant: マスターバリアント
     match_choices:
       all: すべて
       none: なし
@@ -1308,7 +1384,6 @@ ja:
     new_promotion: 新しいプロモーション
     new_promotion_category: 新しいプロモーションカテゴリー
     new_property: 新しいプロパティタイプ
-    new_prototype: 新しいプロトタイプ
     new_refund: 新しい返金
     new_refund_reason: 新しい返金理由
     new_rma_reason: 新しい RMA の理由
@@ -1572,6 +1647,9 @@ ja:
         description: 購入していないユーザーだけが利用可能
         name: 最初の繰り返し購入から
         form_text: 最後の注文が X日以上前のユーザーにプロモーションを適用
+      user_role:
+        description: 注文は、特殊なロールを持ったユーザーが含まれます。
+        name: ユーザーロール
     promotions: プロモーション
     promotion_successfully_created: プロモーションは正常に作成されました。
     promotion_total_changed_before_complete: 注文のプロモーションの一つ以上が不適格となり削除されました。新しい注文の金額を確認して、もう一度お試しください。
@@ -1579,8 +1657,6 @@ ja:
     propagate_all_variants: 全てのバリアントを宣伝する
     properties: プロパティタイプ
     property: プロパティタイプ
-    prototype: プロトタイプ
-    prototypes: プロトタイプ
     provider: Provider
     provider_settings_warning: あなたがプロバイダータイプを変更する場合は、プロバイダー設定を編集する前に最初に保存してください。
     qty: 数量
@@ -1676,7 +1752,6 @@ ja:
     secure_connection_type: セキュアな接続タイプ
     security_settings: セキュリティ設定
     select: 選択
-    select_from_prototype: プロトタイプから選択
     select_a_reason: 理由を選択してください
     select_a_stock_location: 在庫ロケーションを選択してください
     select_stock: 在庫を選択してください
@@ -1731,7 +1806,7 @@ ja:
     shipping_instructions: 配送命令
     shipping_method: 配送方法
     shipping_methods: 配送方法
-    shipping_price_sack: プライスサック
+    shipping_price_sack: 価格一袋分
     shipping_rate:
       display_price:
         display_price_with_explanations: "%{price} (%{explanations})"
@@ -1843,6 +1918,7 @@ ja:
       label: 'ご注文はこれらの分類の %{select} に含まれます。'
       match_all: すべて一致
       match_any: 少なくても一つ一致
+      match_none: なし
     taxonomies: 分類ツリー
     taxonomy: 分類ツリー
     taxonomy_edit: 分類ツリーを編集
@@ -1909,6 +1985,11 @@ ja:
     user: ユーザー
     user_rule:
       choose_users: ユーザーを選んでください
+    user_role_rule:
+      choose_roles: ロールを選んでください
+      label: ユーザーはこれらのロールの %{select} を含まなければなりません
+      match_all: すべて一致
+      match_any: 少なくても一つ一致
     users: ユーザー
     validation:
       unpaid_amount_not_zero: '金額は十分に払い戻されませんでした。%{amount} の支払いがまだ。'
@@ -1921,6 +2002,7 @@ ja:
     value: 値
     variant: バリアント
     variant_placeholder: バリアントを選んでください
+    variant_pricing: バリアントの価格
     variant_properties: バリアントプロパティ
     variant_search: バリアントの検索
     variant_search_placeholder: "品番[SKU] もしくは オプション値"

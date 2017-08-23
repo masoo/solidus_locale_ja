@@ -7,7 +7,7 @@ It provides the Japanese to Solidus.
 Add to your Gemfile:
 
 ```ruby
-gem 'solidus', '~> 2.0.0'
+gem 'solidus', '~> 2.1.0'
 gem 'solidus_auth_devise'
 gem 'rails-i18n'
 gem 'devise-i18n'
@@ -54,7 +54,7 @@ $ vi config/initializers/locale.rb
 ```
 
 ```ruby
-  # add next line.
+  # open new file and add next line.
   Rails.application.config.i18n.default_locale = :ja
 ```
 
