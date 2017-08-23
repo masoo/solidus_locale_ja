@@ -1,5 +1,7 @@
 # solidus_locale_ja
 
+[![Gem Version](https://badge.fury.io/rb/solidus_locale_ja.svg)](https://badge.fury.io/rb/solidus_locale_ja)
+
 It provides the Japanese to Solidus.
 
 ## Installation
